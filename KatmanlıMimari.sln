@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Entities", "Project.Entities\Project.Entities.csproj", "{5FFE5022-AE8D-4C84-A7FD-272653C0E596}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Entities", "Project.Entities\Project.Entities.csproj", "{5FFE5022-AE8D-4C84-A7FD-272653C0E596}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.DataAccess", "Project.DataAccess\Project.DataAccess.csproj", "{5CFB5E65-1FEC-4383-BC37-BDF72E1B3952}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.DataAccess", "Project.DataAccess\Project.DataAccess.csproj", "{5CFB5E65-1FEC-4383-BC37-BDF72E1B3952}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Business", "Project.Business\Project.Business.csproj", "{3D1EF12F-479E-425F-ACEB-033D92E57B39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Business", "Project.Business\Project.Business.csproj", "{3D1EF12F-479E-425F-ACEB-033D92E57B39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Security", "Project.Security\Project.Security.csproj", "{AB1251A4-2865-44E5-96C4-CFC1888477CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Security", "Project.Security\Project.Security.csproj", "{AB1251A4-2865-44E5-96C4-CFC1888477CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Common", "Common\Project.Common.csproj", "{1C0FBA02-A1C0-4395-8C8E-F6ECA1B4D9AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Common", "Common\Project.Common.csproj", "{1C0FBA02-A1C0-4395-8C8E-F6ECA1B4D9AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web API", "Web API\Web API.csproj", "{A3A7C660-7B93-4157-AF83-20E8F7AA8E54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.WebAPI", "Web API\Project.WebAPI.csproj", "{A3A7C660-7B93-4157-AF83-20E8F7AA8E54}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.DTO", "Project.DTO\Project.DTO.csproj", "{E448210E-BE27-4CEB-A1E8-403FCF8783C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{A3A7C660-7B93-4157-AF83-20E8F7AA8E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3A7C660-7B93-4157-AF83-20E8F7AA8E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3A7C660-7B93-4157-AF83-20E8F7AA8E54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E448210E-BE27-4CEB-A1E8-403FCF8783C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E448210E-BE27-4CEB-A1E8-403FCF8783C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E448210E-BE27-4CEB-A1E8-403FCF8783C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E448210E-BE27-4CEB-A1E8-403FCF8783C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
