@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore.Query;
 using Project.Common.Paging;
 using Project.DataAccess.Abstract.Base;
 using Project.Entities.Base;
+using Project.Entities.Entities;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace Project.DataAccess.Concrete.Base;
@@ -35,6 +37,8 @@ public class RepositoryBase<TEntity,TContext> : IRepository<TEntity> where TEnti
             queryable = include(queryable);
         return queryable.FirstOrDefault(predicate);
     }
+
+
 
     public async Task<TEntity?> GetAsync(
     Expression<Func<TEntity, bool>> predicate,
@@ -101,21 +105,25 @@ public class RepositoryBase<TEntity,TContext> : IRepository<TEntity> where TEnti
     public void Add(TEntity entity)
     {
         Context.Add(entity);
+        Context.SaveChanges();
     }
 
     public void AddRange(IList<TEntity> entities)
     {
         Context.AddRange(entities);
+        Context.SaveChanges();
     }
 
     public async Task AddAsync(TEntity entity)
     {
         await Context.AddAsync(entity);
+        await Context.SaveChangesAsync();
     }
 
     public async Task AddRangeAsync(IList<TEntity> entities)
     {
         await Context.AddRangeAsync(entities);
+        await Context.SaveChangesAsync();
     }
     #endregion
 
@@ -123,43 +131,51 @@ public class RepositoryBase<TEntity,TContext> : IRepository<TEntity> where TEnti
     public void Update(TEntity entity)
     {
         Context.Update(entity);
+        Context.SaveChanges();
     }
 
     public void UpdateRange(IList<TEntity> entities)
     {
         Context.UpdateRange(entities);
+        Context.SaveChanges();
     }
 
     public async Task UpdateAsync(TEntity entity)
     {
         await Task.Run(() => Context.Update(entity));
+        await Context.SaveChangesAsync();
     }
 
     public async Task UpdateRangeAsync(IList<TEntity> entities)
     {
         await Task.Run(() => Context.UpdateRange(entities));
+        await Context.SaveChangesAsync();
     }
     #endregion
 
     #region DELETE
     public void Delete(TEntity entity)
     {
-        Context.Remove(entity);
+        Context.Remove(entity); 
+        Context.SaveChanges();
     }
 
     public void DeleteRange(IList<TEntity> entities)
     {
         Context.RemoveRange(entities);
+        Context.SaveChanges();
     }
 
     public async Task DeleteAsync(TEntity entity)
     {
         await Task.Run(() => Context.Remove(entity));
+        await Context.SaveChangesAsync();
     }
 
     public async Task DeleteRangeAsync(IList<TEntity> entities)
     {
         await Task.Run(() => Context.RemoveRange(entities));
+        await Context.SaveChangesAsync();
     }
     #endregion
 
@@ -187,5 +203,7 @@ public class RepositoryBase<TEntity,TContext> : IRepository<TEntity> where TEnti
             queryable = queryable.AsNoTracking();
         return await queryable.AnyAsync(cancellationToken);
     }
+
+  
     #endregion
 }

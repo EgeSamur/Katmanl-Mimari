@@ -7,4 +7,5 @@ namespace Project.DataAccess.Abstract;
 public interface IRefreshTokenRepository : IRepository<RefreshToken>
 {
 
+
 }

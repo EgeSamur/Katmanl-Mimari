@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Project.Common.csproj" />
+    <ProjectReference Include="..\Project.Security\Project.Security.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Query;
 using Project.Common.Paging;
 using Project.Entities.Base;
+using Project.Entities.Entities;
 using System.Linq.Expressions;
 
 namespace Project.DataAccess.Abstract.Base;
@@ -13,6 +14,7 @@ public interface IRepository<T> : IQuery<T> where T : BaseEntity, new()
         Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
         bool enableTracking = true
     );
+
 
     Task<T?> GetAsync(
         Expression<Func<T, bool>> predicate,

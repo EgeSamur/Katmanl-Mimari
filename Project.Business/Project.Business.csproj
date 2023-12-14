@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Project.DataAccess\Project.DataAccess.csproj" />
+    <ProjectReference Include="..\Project.DTO\Project.DTO.csproj" />
+    <ProjectReference Include="..\Project.Entities\Project.Entities.csproj" />
+    <ProjectReference Include="..\Project.Security\Project.Security.csproj" />
+  </ItemGroup>
+
 </Project>
