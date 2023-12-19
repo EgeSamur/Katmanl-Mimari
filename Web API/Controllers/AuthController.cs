@@ -1,4 +1,5 @@
 ﻿using Azure.Core;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Project.Business.Abstract;
 using Project.Business.Concrete;
@@ -46,5 +47,12 @@ public class AuthController : Controller
             return Ok(result);
         }
         return BadRequest();
+    }
+
+    [HttpGet("test")]
+    [Authorize]
+    public IActionResult Test()
+    {
+        return Ok();
     }
 }

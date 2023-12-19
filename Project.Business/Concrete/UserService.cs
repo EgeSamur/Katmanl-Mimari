@@ -62,6 +62,12 @@ public class UserService : IUserService
         return new SuccessDataResult<User>(result);
     }
 
+    public IDataResult<User> GetUser(string email)
+    {
+        var result = _userRepository.GetUser(email);
+        return new SuccessDataResult<User>(result.Data);
+    }
+
     public object GetByMail(Func<object, bool> value)
     {
         throw new NotImplementedException();

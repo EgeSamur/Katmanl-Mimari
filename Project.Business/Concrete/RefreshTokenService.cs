@@ -34,6 +34,7 @@ public class RefreshTokenService : IRefreshTokenService
             var user = userData.Data;
             var userRefreshToken = user.RefreshTokens.FirstOrDefault(rt => rt.Token == refreshToken);
             var refrestokenexp = userRefreshToken.Expires;
+            //userRefreshToken.IsUsed = true; --> Çalışmıyor.
             var now = DateTime.UtcNow;
             if (now > refrestokenexp)
             {

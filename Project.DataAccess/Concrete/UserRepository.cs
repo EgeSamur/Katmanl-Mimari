@@ -24,8 +24,26 @@ public class UserRepository : RepositoryBase<User, ApplicationDbContext>, IUserR
     .FirstOrDefault(joined => joined.RefreshToken.Token == refreshToken)
     ?.User;
 
+
+
         return new SuccessDataResult<User>(user);
 
+    }
+
+    public IDataResult<User> GetUser(string email)
+    {
+        var user = _context.Users
+    .Join(_context.UserRoles,
+          user => user.Id,
+          userRole => userRole.UserId,
+          (user, userRole) => new { User = user, UserRole = userRole })
+    .Join(_context.Roles,
+          joined => joined.UserRole.RoleId,
+          role => role.Id,
+          (joined, role) => new { joined.User, Role = role })
+    .FirstOrDefault(joined => joined.User.EmailAddress == email).User;
+
+        return new SuccessDataResult<User>(user);
     }
 
 }

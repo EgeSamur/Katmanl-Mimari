@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project.DataAccess.Abstract;
 
-public interface IRoleRepository:IRepository<Role>
+public interface ICategoryRepository : IRepository<Category>
 {
 }
+

@@ -1,6 +1,4 @@
-﻿
-
-using Project.Entities.Base;
+﻿using Project.Entities.Base;
 
 namespace Project.Entities.Entities;
 

@@ -8,4 +8,5 @@ namespace Project.DataAccess.Abstract;
 public interface IUserRepository: IRepository<User>
 {
     public IDataResult<User> GetUserByRToken(string refreshToken);
+    public IDataResult<User> GetUser(string email);
 }

@@ -13,6 +13,7 @@ public interface IUserService
     IDataResult<IPaginate<User>> GetAll();
     IDataResult<User> GetById(Guid id);
     public IDataResult<User> GetByRefreshToken(string refreshToken);
+    public IDataResult<User> GetUser(string email);
 
     //List<OperationClaim> GetClaims(User user);
     IDataResult<User> GetByMail(string mail);
