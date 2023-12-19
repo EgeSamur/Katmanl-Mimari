@@ -98,7 +98,7 @@ Uygulamayı çalıştırmadan önce Project.WebAPI içerisindeki appsettings.jso
 
 | Parametre | Tip     | Açıklama                       |
 | :-------- | :------- | :-------------------------------- |
-| `categoryIdbillDateStart,billDateEnd,totalKDVMax,totalKDVMin,totalMax,totalMin`      | `IResult` | **Gerekli**. totalKDVMax,totalKDVMin,totalMax,totalMin 0 gönderilmeli tarih formatı 2023-12-19 olmalı.
+| `categoryIdbillDateStart,billDateEnd,totalKDVMax,totalKDVMin,totalMax,totalMin`      | `IResult` | **Gerekli**. totalKDVMax,totalKDVMin,totalMax,totalMin 0 gönderilmeli tarih formatı YYYY/MM/DD olmalı.
 
 #### Delete Bill Detail
 
