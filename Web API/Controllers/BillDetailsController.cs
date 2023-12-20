@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Project.Business.Abstract;
 using Project.DTO;
 
@@ -6,6 +7,7 @@ namespace Web_API.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
+    //[Authorize]
     public class BillDetailsController : Controller
     {
         private readonly IBillDetailService _billDetailService;
@@ -39,9 +41,9 @@ namespace Web_API.Controllers
         }
 
         [HttpPost("get_list-bill_detail")]
-        public IActionResult GetListBillDetail([FromBody] FilterBillRequest filterBillDetail)
+        public IActionResult GetListBillDetail([FromBody] FilterBillRequest filterBillDetail, [FromQuery] int index)
         {
-            var result = _billDetailService.FilterBills(filterBillDetail);
+            var result = _billDetailService.FilterBills(filterBillDetail,index);
             if (result.Success)
             {
                 return Ok(result);
@@ -50,9 +52,9 @@ namespace Web_API.Controllers
         }
 
         [HttpPost("get_totals-bill_detail")]
-        public IActionResult GetTotalsBillDetail()
+        public IActionResult GetTotalsBillDetail([FromBody] ForTotal fortotal)
         {
-            var result = _billDetailService.GetTotalForAMount();
+            var result = _billDetailService.GetTotalForAMount(fortotal);
             if (result.Success)
             {
                 return Ok(result);
