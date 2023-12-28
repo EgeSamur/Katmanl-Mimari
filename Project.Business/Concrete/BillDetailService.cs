@@ -171,7 +171,17 @@ public class BillDetailService : IBillDetailService
     //    return new ErrorResult("Someting Went Wrong");
 
     //}
+    public IResult GetBillDetailsBills(SizeIndex sizeIndex)
+    {
+        var result = _billDetailRepository.GetList(index:sizeIndex.Index, size:sizeIndex.Size);
+        if(result != null)
+        {
+            return new SuccessDataResult<IPaginate<BillDetails>>(result);
 
+        }
+        return new ErrorResult("Something went wrong.");
+
+    }
     public IResult FilterBills(FilterBillRequest request, int index = 0, int size = 10)
     {
         var category = _categoryRepository.Get(c=>c.Id == request.CategoryId);
