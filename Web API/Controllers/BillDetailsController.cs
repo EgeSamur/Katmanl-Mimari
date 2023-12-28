@@ -50,6 +50,16 @@ namespace Web_API.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("get_list-bill_detailNEW")]
+        public IActionResult GetListBillDetail([FromQuery] SizeIndex sizeIndex)
+        {
+            var result = _billDetailService.GetBillDetailsBills(sizeIndex);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
         [HttpPost("get_totals-bill_detail")]
         public IActionResult GetTotalsBillDetail([FromBody] ForTotal fortotal)

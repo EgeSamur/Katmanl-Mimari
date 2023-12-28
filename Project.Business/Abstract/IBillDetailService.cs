@@ -10,6 +10,7 @@ public interface IBillDetailService
     public IDataResult<BillDetails> CreateBillDetail(BillDetaiDto billDetaiDto);
     public IResult DeleteBillDetail(Guid id);
     public IResult FilterBills(FilterBillRequest request, int index = 0, int size = 10);
+    public IResult GetBillDetailsBills(SizeIndex sizeIndex);
     //public IResult FilterBills(FilterBillRequest request);
     //public IResult UpdateBillDetail(BillDetaiDto billDetaiDto);
     public IResult GetTotalForAMount(ForTotal fortTotal);
