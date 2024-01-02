@@ -66,111 +66,7 @@ public class BillDetailService : IBillDetailService
         return new ErrorResult("Something Went Wrong..");
     }
 
-    //public IResult FilterBills(FilterBillRequest request)
-    //{// Filtreleme ifadelerini oluştur
 
-    //    ////Sadece Kategori İdye göre
-    //    //if(request.CategoryId != null && request.BillDateStart == null && request.BillDateEnd == null && request.TotalKDVMax == 0 && request.TotalKDVMin == 0 && request.TotalMax == 0 && request.TotalMin == 0)
-    //    //{
-
-    //    //}
-    //    ////Sadece Date Göre
-    //    //if (request.CategoryId == null && request.BillDateStart != null && request.BillDateEnd != null && request.TotalKDVMax == 0 && request.TotalMax == 0 && request.TotalMax == 0 && request.TotalMin == 0)
-    //    //{ 
-
-    //    //}
-    //    ////Sadece Kdv'ye göre Göre
-    //    //if (request.CategoryId == null && request.BillDateStart == null && request.BillDateEnd == null && request.TotalKDVMax >= 0 && request.TotalMax > 0 && request.TotalMax == 0 && request.TotalMin == 0)
-    //    //{
-
-    //    //}
-
-    //    //if (request.CategoryId == null && request.BillDateStart == null && request.BillDateEnd == null && request.TotalKDVMax == 0 && request.TotalMax == 0 && request.TotalMax > 0 && request.TotalMin == 0)
-    //    //{
-
-    //    //}
-
-
-
-
-
-
-
-
-    //    //if (request.BillDateStart != null && request.BillDateEnd != null &&request.TotalKDVMax == 0 && request.TotalMax == 0 && request.TotalMin ==0 && request.TotalMin == 0)
-    //    //{
-    //    //    Expression<Func<BillDetails, bool>> predicate = i =>
-    //    //           (request.CategoryId == null || i.CategoryId == request.CategoryId) ||
-    //    //           (request.BillDateStart == null || i.BillDate >= request.BillDateStart) &&
-    //    //           (request.BillDateEnd == null || i.BillDate <= request.BillDateEnd);
-    //    //    var results = _billDetailRepository.GetList(predicate);
-    //    //    if (results.Count > 0)
-    //    //    {
-    //    //        return new SuccessDataResult<IPaginate<BillDetails>>(results);
-
-    //    //    }
-    //    //}
-
-    //    #region Düzeltilecek
-    //    //else if (request.TotalKDVMax == 0 && request.TotalKDVMin == 0)
-    //    //{
-    //    //    Expression<Func<BillDetails, bool>> predicate = i =>
-    //    //  (request.CategoryId == null || i.CategoryId == request.CategoryId) ||
-    //    //  (request.BillDateStart == null || i.BillDate >= request.BillDateStart) &&
-    //    //  (request.BillDateEnd == null || i.BillDate <= request.BillDateEnd) ||
-    //    //  (request.TotalMin == 0 || i.Total >= request.TotalMin) &&
-    //    //  (request.TotalMax == 0 || i.Total <= request.TotalMax);
-
-    //    //    var results = _billDetailRepository.GetList(predicate);
-    //    //    if (results.Count > 0)
-    //    //    {
-    //    //        return new SuccessDataResult<IPaginate<BillDetails>>(results);
-
-    //    //    }
-    //    //}
-    //    //else if (request.TotalMax == 0 && request.TotalMin == 0)
-    //    //{
-    //    //    Expression<Func<BillDetails, bool>> predicate = i =>
-    //    //  (request.CategoryId == null || i.CategoryId == request.CategoryId) ||
-    //    //  (request.BillDateStart == null || i.BillDate >= request.BillDateStart) &&
-    //    //  (request.BillDateEnd == null || i.BillDate <= request.BillDateEnd) ||
-    //    //  (request.TotalKDVMin == 0 || i.TotalKdv >= request.TotalKDVMin) &&
-    //    //  (request.TotalKDVMax == 0 || i.TotalKdv <= request.TotalKDVMax);
-
-    //    //    var results = _billDetailRepository.GetList(predicate);
-    //    //    if (results.Count > 0)
-    //    //    {
-    //    //        return new SuccessDataResult<IPaginate<BillDetails>>(results);
-
-    //    //    }
-    //    //}
-
-    //    //else
-    //    //{
-    //    //    Expression<Func<BillDetails, bool>> predicate = i =>
-    //    //  (request.CategoryId == null || i.CategoryId == request.CategoryId) &&
-    //    //  (request.BillDateStart == null || i.BillDate >= request.BillDateStart) &&
-    //    //  (request.BillDateEnd == null || i.BillDate <= request.BillDateEnd) &&
-    //    //  (request.TotalKDVMin == 0 || i.TotalKdv >= request.TotalKDVMin) &&
-    //    //  (request.TotalKDVMax == 0 || i.TotalKdv <= request.TotalKDVMax) && 
-    //    //  (request.TotalMin == 0 || i.Total >= request.TotalMin) &&
-    //    //  (request.TotalMax == 0 || i.Total <= request.TotalMax);
-
-    //    //    var results = _billDetailRepository.GetList(predicate);
-    //    //    if (results.Count > 0)
-    //    //    {
-    //    //        return new SuccessDataResult<IPaginate<BillDetails>>(results);
-
-    //    //    }
-    //    //}
-    //    #endregion
-
-
-
-
-    //    return new ErrorResult("Someting Went Wrong");
-
-    //}
     public IResult GetBillDetailsBills(SizeIndex sizeIndex)
     {
         var result = _billDetailRepository.GetList(index:sizeIndex.Index, size:sizeIndex.Size);
@@ -208,6 +104,38 @@ public class BillDetailService : IBillDetailService
         return new ErrorResult("Something Went Wrong.");
         //var result = _billDetailRepository.GetList(predicate, index: index, size: size);
         //return new SuccessDataResult<IPaginate<BillDetails>>(result);
+    }
+
+    public IResult GetBillsAmountForCategories()
+    {
+        decimal total = 0;
+        var categoryAndTotal = new List<CategoryAndTotal>();
+        var categories = _categoryRepository.GetList(size:9999999).Items;
+        
+        if(categories.Count > 0)
+        {
+            foreach (var category in categories)
+            {
+                var categoryId = category.Id;
+
+                var billDetails = _billDetailRepository.GetList(i => i.CategoryId == categoryId, size: 999999999).Items;
+                foreach (var bill in billDetails)
+                {
+                    total = total + bill.Total;
+                }
+                categoryAndTotal.Add(new CategoryAndTotal
+                {
+                    CategoryId = categoryId,
+                    CategoryName=category.Name,
+                    Total = total
+                });
+                total = 0;
+            }
+            return new SuccessDataResult<List<CategoryAndTotal>>(categoryAndTotal, "Succes");
+        }
+
+        return new ErrorResult("Something went wrong.");
+
     }
 
 
@@ -250,6 +178,11 @@ public class BillDetailService : IBillDetailService
         return new ErrorResult("Something went wrong.");
 
 
+    }
+
+    public IResult GetBillsAmountForRoles()
+    {
+        throw new NotImplementedException();
     }
 
     //public IResult UpdateBillDetail(BillDetaiDto billDetaiDto)

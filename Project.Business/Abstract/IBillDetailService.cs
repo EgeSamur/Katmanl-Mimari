@@ -11,6 +11,9 @@ public interface IBillDetailService
     public IResult DeleteBillDetail(Guid id);
     public IResult FilterBills(FilterBillRequest request, int index = 0, int size = 10);
     public IResult GetBillDetailsBills(SizeIndex sizeIndex);
+
+    public IResult GetBillsAmountForCategories();
+    public IResult GetBillsAmountForRoles();
     //public IResult FilterBills(FilterBillRequest request);
     //public IResult UpdateBillDetail(BillDetaiDto billDetaiDto);
     public IResult GetTotalForAMount(ForTotal fortTotal);

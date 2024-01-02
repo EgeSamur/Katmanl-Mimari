@@ -9,5 +9,6 @@ public class UserForRegisterDto : IDto
     public string Password { get; set; }
     public string FirtName { get; set; }
     public string LastName { get; set; }
+    public string RoleName { get; set; }
 }
 

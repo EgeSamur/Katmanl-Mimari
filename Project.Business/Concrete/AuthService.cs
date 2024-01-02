@@ -47,7 +47,7 @@ public class AuthService :IAuthService
             PasswordSalt = passwordSalt,
             
         };
-        var role = _roleService.GetRoleByName("Member").Data;
+        var role = _roleService.GetRoleByName(userForRegisterDto.RoleName).Data;
         var userRole = new UserRole // dbye kaydetmeliyiz.
         {
             UserId = user.Id,

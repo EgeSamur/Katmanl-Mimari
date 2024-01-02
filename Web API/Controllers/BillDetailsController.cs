@@ -53,6 +53,11 @@ namespace Web_API.Controllers
         [HttpGet("get_list-bill_detailNEW")]
         public IActionResult GetListBillDetail([FromQuery] SizeIndex sizeIndex)
         {
+
+            if(sizeIndex.Size == 0)
+            {
+                sizeIndex.Size = 999999;
+            }
             var result = _billDetailService.GetBillDetailsBills(sizeIndex);
             if (result.Success)
             {
@@ -65,6 +70,17 @@ namespace Web_API.Controllers
         public IActionResult GetTotalsBillDetail([FromBody] ForTotal fortotal)
         {
             var result = _billDetailService.GetTotalForAMount(fortotal);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("get_totals-bill_detail_for_categories")]
+        public IActionResult GetBillsTotalForCategories()
+        {
+            var result = _billDetailService.GetBillsAmountForCategories();
             if (result.Success)
             {
                 return Ok(result);
