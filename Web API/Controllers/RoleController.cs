@@ -40,6 +40,31 @@ namespace Web_API.Controllers
             return BadRequest();
 
         }
+        [HttpGet("get-all-roles")]
+        public IActionResult GetAllRoles([FromQuery] int index, [FromQuery] int size)
+        {
+            var result = _roleService.GetAllRoles(index:index, size:size);
+            if (result.Success == true)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+
+        }
+
+        [HttpGet("get-users-and-roles")]
+        public IActionResult GetUserAndRoles()
+        {
+            var result = _roleService.GetAllRolesAndUsers();
+            if (result.Success == true)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+
+        }
+
+
 
 
     }
