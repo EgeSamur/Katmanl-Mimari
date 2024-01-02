@@ -67,9 +67,9 @@ public class BillDetailService : IBillDetailService
     }
 
 
-    public IResult GetBillDetailsBills(SizeIndex sizeIndex)
+    public IResult GetBillDetailsBills(int index,int size)
     {
-        var result = _billDetailRepository.GetList(index:sizeIndex.Index, size:sizeIndex.Size);
+        var result = _billDetailRepository.GetList(index:index, size:size);
         if(result != null)
         {
             return new SuccessDataResult<IPaginate<BillDetails>>(result);
