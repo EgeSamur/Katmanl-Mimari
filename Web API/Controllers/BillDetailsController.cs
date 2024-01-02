@@ -51,11 +51,11 @@ namespace Web_API.Controllers
             return BadRequest(result);
         }
         [HttpGet("get_list-bill_detailNEW")]
-        public IActionResult GetListBillDetail([FromQuery] int index, [FromQuery] int size)
+        public IActionResult GetListBillDetail()
         {
 
            
-            var result = _billDetailService.GetBillDetailsBills(index:index,size:size);
+            var result = _billDetailService.GetBillDetailsBills();
             if (result.Success)
             {
                 return Ok(result);
