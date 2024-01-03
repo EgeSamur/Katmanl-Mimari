@@ -69,12 +69,23 @@ public class BillDetailService : IBillDetailService
 
     public IResult GetBillDetailsBills()
     {
-        var result = _billDetailRepository.GetList(index:0, size:9999999);
+        var result = _billDetailRepository.GetList(index:0, size:9999999).Items;
         if(result != null)
         {
-            return new SuccessDataResult<IPaginate<BillDetails>>(result);
+            var lists = new List<BillDetails>();
+            foreach (var billDetail in result)
+            {
+                var category = _categoryRepository.Get(i => i.Id == billDetail.CategoryId);
+                if (category != null)
+                {
+                    billDetail.Category = category;
+                    lists.Add(billDetail);
+                }
 
+            }
+            return new SuccessDataResult<List<BillDetails>>(lists);
         }
+        
         return new ErrorResult("Something went wrong.");
 
     }
